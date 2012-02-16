@@ -15,9 +15,16 @@ class Square
   end
 
   def has_neighbor?
-   left  && !left.visited?  ||
-   right && !right.visited? ||
-   up    && !up.visited?    ||
-   down  && !down.visited?  ? true : false
+    has_left_neighbor?  ||
+    has_right_neighbor? ||
+    has_down_neighbor?  ||
+    has_up_neighbor?
+  end
+
+  %w(left right down up).each do |direction|
+    define_method "has_#{direction}_neighbor?" do
+      square = self.send(direction)
+      !(square.nil? || square.visited?)
+    end
   end
 end

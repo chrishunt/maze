@@ -53,4 +53,17 @@ describe Square do
       subject.has_neighbor?.should == true
     end
   end
+
+  %w(left right down up).each do |dir|
+    describe "#has_#{dir}_neighbor?" do
+      it "returns false when square does not have a #{dir} neighbor" do
+        subject.send("has_#{dir}_neighbor?").should == false
+      end
+
+      it 'returns true when square has a left neighbor' do
+        subject.send("#{dir}=", Square.new)
+        subject.send("has_#{dir}_neighbor?").should == true
+      end
+    end
+  end
 end
