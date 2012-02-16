@@ -10,7 +10,7 @@ class Maze
     raise Exception.new("Invalid parameters") if invalid
   end
 
-  def explore!(square = start, x = 0, y = 0)
+  def explore!(square = start, x = 0, y = height - 1)
     square.visit!
   end
 end
