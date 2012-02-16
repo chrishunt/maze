@@ -18,6 +18,21 @@ describe Maze do
     end
   end
 
+  describe '#to_html' do
+    subject { Maze.new(5, 10) }
+
+    it 'explores the maze if unexplored' do
+      subject.explored?.should == false
+      subject.to_html
+      subject.explored?.should == true
+    end
+
+    it 'returns html' do
+      subject.to_html.should =~ /<html>/
+      subject.to_html.should =~ /<\/html>/
+    end
+  end
+
   describe '#explore!' do
     let(:width)  {  5 }
     let(:height) { 10 }
@@ -26,7 +41,7 @@ describe Maze do
 
     it 'visits all squares' do
       subject.send(:explore!)
-      subject.grid.each do |column|
+      subject.squares.each do |column|
         column.each do |square|
           square.visited?.should == true
         end
@@ -35,7 +50,7 @@ describe Maze do
 
     it 'opens doors in each square' do
       subject.send(:explore!)
-      subject.grid.each do |column|
+      subject.squares.each do |column|
         column.each do |square|
           square.doors.size.should > 0
         end
@@ -49,11 +64,11 @@ describe Maze do
     end
   end
 
-  describe '#new_grid' do
+  describe '#new_squares' do
     let(:width)  {  5 }
     let(:height) { 10 }
 
-    subject { Maze.new(width, height).send(:new_grid) }
+    subject { Maze.new(width, height).send(:new_squares) }
 
     it 'returns a new grid with the correct dimensions' do
       subject.size.should == width
@@ -81,7 +96,7 @@ describe Maze do
       #   0 1 2 3 4 5 6 7 8 9
       maze = Maze.new(10, 5)
       [[0,0], [1,0], [2,0], [3,0], [3,1], [1,1], [2,1], [2,2]].each do |x, y|
-        maze.grid[x][y].visit!
+        maze.squares[x][y].visit!
       end
       maze
     end
