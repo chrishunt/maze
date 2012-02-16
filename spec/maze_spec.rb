@@ -41,6 +41,12 @@ describe Maze do
         end
       end
     end
+
+    it 'marks this maze as explored' do
+      subject.explored?.should == false
+      subject.send(:explore!)
+      subject.explored?.should == true
+    end
   end
 
   describe '#new_grid' do

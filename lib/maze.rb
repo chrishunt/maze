@@ -2,18 +2,23 @@ class Maze
   attr_reader :grid
 
   def initialize(width, height)
-    @width  = width.to_i
-    @height = height.to_i
-    @grid   = new_grid
+    @width    = width.to_i
+    @height   = height.to_i
+    @grid     = new_grid
+    @explored = false
     invalid = @width == 0 || @height == 0
 
     raise Exception.new("Invalid parameters") if invalid
   end
 
+  def explored?
+    @explored
+  end
+
   private
 
   def explore!(position = [0, 0], visited = [])
-    return unless position
+    return @explored = true unless position
     x, y = position
 
     @grid[x][y].visit!
