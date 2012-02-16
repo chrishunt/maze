@@ -18,16 +18,18 @@ describe Maze do
   end
 
   describe 'attributes' do
+    subject { Maze.new(5, 10) }
+
     it 'has a width' do
-      Maze.new(5, 10).width.should == 5
+      subject.width.should == 5
     end
 
     it 'has a height' do
-      Maze.new(5, 10).height.should == 10
+      subject.height.should == 10
     end
 
     it 'has a start square' do
-      Maze.new(5, 10).start.class.should == Square
+      subject.start.class.should == Square
     end
   end
 
