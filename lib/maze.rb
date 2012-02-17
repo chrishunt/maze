@@ -32,6 +32,10 @@ class Maze
 
   private
 
+  def new_squares
+    Array.new(@width) { Array.new(@height) { Square.new } }
+  end
+
   def explore!(position = [0, 0], visited = [])
     return @explored = true unless position
 
@@ -53,6 +57,12 @@ class Maze
     [[x,y-1], [x,y+1], [x-1,y], [x+1,y]].map do |x, y|
       [x, y] if square_open?(x, y)
     end.compact
+  end
+
+  def square_open?(x, y)
+    x < @width  && x >= 0 &&
+    y < @height && y >= 0 &&
+    @squares[x][y].unvisited?
   end
 
   def open_door(x, y, next_x, next_y)
@@ -78,16 +88,6 @@ class Maze
     when :down
       :up
     end
-  end
-
-  def square_open?(x, y)
-    x < @width  && x >= 0 &&
-    y < @height && y >= 0 &&
-    @squares[x][y].unvisited?
-  end
-
-  def new_squares
-    Array.new(@width) { Array.new(@height) { Square.new } }
   end
 
   def html_head
