@@ -20,6 +20,12 @@ describe Square do
     end
   end
 
+  describe '#unvisited?' do
+    it 'defaults to true' do
+      subject.unvisited?.should == true
+    end
+  end
+
   describe '#visit!' do
     it 'marks this square as visited' do
       subject.visited?.should == false

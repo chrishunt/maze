@@ -83,7 +83,7 @@ class Maze
   def square_open?(x, y)
     x < @width  && x >= 0 &&
     y < @height && y >= 0 &&
-    !@squares[x][y].visited?
+    @squares[x][y].unvisited?
   end
 
   def new_squares

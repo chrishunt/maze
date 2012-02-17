@@ -10,6 +10,10 @@ class Square
     @visited
   end
 
+  def unvisited?
+    !@visited
+  end
+
   def visit!
     @visited = true
   end
