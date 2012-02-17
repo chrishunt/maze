@@ -2,7 +2,7 @@ Maze
 ====
 Inspired by [Jack Danger](https://github.com/JackDanger/maze)
 
-![Maze Output](maze.jpg "Maze Output")
+![Maze Output](https://github.com/huntca/maze/raw/master/image/maze.jpg "Maze Output")
 
 Usage
 -----
