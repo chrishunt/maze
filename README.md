@@ -1,7 +1,7 @@
 Maze
 ====
-Inspired by [Jack Danger](https://github.com/JackDanger/maze)
-This is a depth-first maze generation library and was _not_ written on an airplane.
+Inspired by [Jack Danger](https://github.com/JackDanger/maze). This is a
+depth-first maze generation library that was _not_ written on an airplane.
 
 Usage
 -----
