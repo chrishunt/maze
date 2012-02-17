@@ -1,5 +1,5 @@
 class Maze
-  attr_reader :squares
+  attr_reader :squares, :height, :width
 
   def initialize(width, height)
     @width    = width.to_i
