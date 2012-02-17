@@ -1,4 +1,4 @@
-Maze
+Maze [![Build Status](https://secure.travis-ci.org/huntca/maze.png)](http://travis-ci.org/huntca/maze)
 ====
 Inspired by [Jack Danger](https://github.com/JackDanger/maze). This is a
 depth-first maze generation library that was _not_ written on an airplane.
