@@ -6,6 +6,7 @@ class Maze
     @height   = height.to_i
     @squares  = new_squares
     @explored = false
+
     invalid = @width == 0 || @height == 0
 
     raise Exception.new("Invalid parameters") if invalid
@@ -17,6 +18,7 @@ class Maze
 
   def to_html
     explore! unless explored?
+
     <<-HTML
       <!DOCTYPE html>
       <html>
@@ -37,18 +39,14 @@ class Maze
     @squares[x][y].visit!
 
     next_x, next_y = possible_moves(x, y).sample
-
-    # Backtrack if we've reached a dead-end
     return explore!(visited.pop, visited) if next_x.nil?
 
     open_door = open_door(x, y, next_x, next_y)
     next_door = opposite_door(open_door)
 
-    # Open a door from this square to the next
     @squares[x][y].doors << open_door
     @squares[next_x][next_y].doors << next_door
 
-    # Explore the next square
     explore!([next_x, next_y], visited << [x, y])
   end
 

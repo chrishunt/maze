@@ -1,5 +1,5 @@
-require 'maze'
 require 'maze_spec_helper'
+require 'maze'
 
 describe Maze do
   describe '#initialize' do
@@ -27,17 +27,16 @@ describe Maze do
       subject.explored?.should == true
     end
 
-    it 'returns html' do
+    it 'returns html tags' do
       subject.to_html.should =~ /<html>/
-      subject.to_html.should =~ /<\/html>/
+      subject.to_html.should =~ /<head>/
+      subject.to_html.should =~ /maze/
+      subject.to_html.should =~ /square/
     end
   end
 
   describe '#explore!' do
-    let(:width)  {  5 }
-    let(:height) { 10 }
-
-    subject { Maze.new(width, height) }
+    subject { Maze.new(5, 10) }
 
     it 'visits all squares' do
       subject.send(:explore!)

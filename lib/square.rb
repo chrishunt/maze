@@ -12,6 +12,5 @@ class Square
 
   def visit!
     @visited = true
-    self
   end
 end

@@ -26,9 +26,5 @@ describe Square do
       subject.visit!
       subject.visited?.should == true
     end
-
-    it 'returns this square' do
-      subject.visit!.should == subject
-    end
   end
 end
