@@ -12,9 +12,10 @@ describe Maze do
       lambda{ Maze.new(10) }.should raise_error
     end
 
-    it 'raises exception when parameters are invalid' do
-      lambda{ Maze.new(1.1, 0) }.should raise_error
-      lambda{ Maze.new('invalid', 5) }.should raise_error
+    it 'raises exception with non-positve maze dimensions' do
+      [[1.1, 0], [-1, 1], ['invalid', 5]].each do |x, y|
+        lambda{ Maze.new(x, y) }.should raise_error("Invalid maze dimensions")
+      end
     end
   end
 

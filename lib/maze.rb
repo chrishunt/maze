@@ -4,12 +4,12 @@ class Maze
   def initialize(width, height)
     @width    = width.to_i
     @height   = height.to_i
-    @squares  = new_squares
+
+    invalid = @width < 1 || @height < 1
+    raise Exception.new("Invalid maze dimensions") if invalid
+
     @explored = false
-
-    invalid = @width == 0 || @height == 0
-
-    raise Exception.new("Invalid parameters") if invalid
+    @squares  = new_squares
   end
 
   def explored?
