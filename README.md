@@ -5,7 +5,7 @@ depth-first maze generation library that was _not_ written on an airplane.
 
 Usage
 -----
-To generate a maze of width `30` and height `20`:
+To generate a maze of width `30` and height `20`
 
     ruby maze.rb 30 20 > maze.html && open maze.html
 
