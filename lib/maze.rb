@@ -34,16 +34,15 @@ class Maze
 
   def explore!(position = [0, 0], visited = [])
     return @explored = true unless position
+
     x, y = position
-
     @squares[x][y].visit!
-
     next_x, next_y = possible_moves(x, y).sample
+
     return explore!(visited.pop, visited) if next_x.nil?
 
     open_door = open_door(x, y, next_x, next_y)
     next_door = opposite_door(open_door)
-
     @squares[x][y].doors << open_door
     @squares[next_x][next_y].doors << next_door
 
